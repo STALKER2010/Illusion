@@ -9,6 +9,7 @@ public class DeltoidRoom extends Room {
     public DeltoidRoom() {
         super();
     }
+
     public DeltoidRoom(String name) {
         super(name);
         background = "game_bg";

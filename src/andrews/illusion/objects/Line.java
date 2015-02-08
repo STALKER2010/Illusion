@@ -5,8 +5,8 @@ import andrews.illusion.objects.reflection.MainPoint;
 import java.awt.*;
 
 /**
-* @author STALKER_2010
-*/
+ * @author STALKER_2010
+ */
 public class Line {
     public int x1 = 0;
     public int y1 = 0;
@@ -24,6 +24,7 @@ public class Line {
         this.y2 = y2;
         return this;
     }
+
     public Line set(final double x1, final double y1, final double x2, final double y2) {
         this.x1 = MainPoint.double2int(x1);
         this.y1 = MainPoint.double2int(y1);

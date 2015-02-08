@@ -9,6 +9,7 @@ public class AstroidRoom extends Room {
     public AstroidRoom() {
         super();
     }
+
     public AstroidRoom(String name) {
         super("astroid_room");
         background = "game_bg";

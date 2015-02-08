@@ -9,6 +9,7 @@ public class ReflectionRoom extends Room {
     public ReflectionRoom() {
         super();
     }
+
     public ReflectionRoom(String name) {
         super(name);
         background = "game_bg";
