@@ -20,6 +20,7 @@ public class Controller extends GameObject {
     public static final int MODE_PARABOLIC = 0;
     public static final int MODE_CIRCLE = 1;
     public static final int MODE_ASTROID = 2;
+    public static final int MODE_SIMPSON = 3;
     public boolean isLimited = false;
     public int mode = MODE_PARABOLIC;
 
@@ -49,6 +50,11 @@ public class Controller extends GameObject {
                 break;
             }
             case (KeyEvent.VK_4): {
+                IllusionGame.instance.currentRoom = "deltoid_room";
+                mode = MODE_SIMPSON;
+                break;
+            }
+            case (KeyEvent.VK_5): {
                 isLimited = !isLimited;
                 break;
             }

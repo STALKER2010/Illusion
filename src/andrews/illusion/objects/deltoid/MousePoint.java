@@ -1,0 +1,200 @@
+package andrews.illusion.objects.deltoid;
+
+import andrews.illusion.IllusionGame;
+import andrews.illusion.objects.Controller;
+import andrews.illusion.objects.GradientHelper;
+import andrews.illusion.objects.Line;
+import andrews.jengine.Animation;
+import andrews.jengine.DB;
+import andrews.jengine.GameObject;
+import andrews.jengine.modules.Resources;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author STALKER_2010
+ */
+public class MousePoint extends GameObject {
+
+    public MousePoint() {
+        super();
+    }
+
+    public MousePoint(String name) {
+        super(name);
+        final Animation a = Resources.animation(sprite);
+        a.steps.clear();
+        a.isLooped = false;
+        a.isPlaying = false;
+        visible = true;
+        x = 400;
+        y = 265;
+        for (int i = 0; i < 360; i += 1) {
+            final double angle = Math.toRadians(i);
+            final double px = 400 + (200 * Math.cos(angle));
+            final double py = 300 + (200 * Math.sin(angle));
+            circlePoints.add(new Point(double2int(px), double2int(py)));
+        }
+        recalculate();
+    }
+
+    private Controller ctrl = null;
+    private double angleInDegrees = 0;
+
+    @Override
+    public void update() {
+        super.update();
+        visible = IllusionGame.instance.currentRoom.equals("deltoid_room");
+        if (moving) {
+            PointerInfo a = MouseInfo.getPointerInfo();
+            Point point = new Point(a.getLocation());
+            SwingUtilities.convertPointFromScreen(point, IllusionGame.instance);
+            this.x = point.getX();
+            this.y = point.getY();
+            double deltaY = y - 265;
+            double deltaX = x - 400;
+            double newAngleInDegrees = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+            if (newAngleInDegrees != angleInDegrees) {
+                angleInDegrees = newAngleInDegrees;
+                UI.rotateTriangle(angleInDegrees);
+                recalculate();
+            }
+        }
+    }
+
+    @Override
+    public void onKey(int keycode) {
+        super.onKey(keycode);
+        recalculate();
+    }
+
+    List<Point> circlePoints = new ArrayList<>();
+
+    private void recalculate() {
+        if (ctrl == null) {
+            ctrl = (Controller) DB.db.objects.get("controller");
+        }
+        rays.clear();
+        for (final Point cPoint : circlePoints) {
+            final Ray r = new Ray();
+
+            final Point r1 = new Point(cPoint.x, cPoint.y);
+            for (int i = 0; i < 360; i++) {
+                Point inter = intersectWithLine(r1, UI.extendedSide1);
+                final int x2 = cPoint.x;
+                final int y2 = cPoint.y;
+                final int x1 = inter.x;
+                final int y1 = inter.y;
+                r.f_part.set(x1, y1, x2, y2);
+            }
+            for (int i = 0; i < 360; i++) {
+                Point inter = intersectWithLine(r1, UI.extendedSide2);
+                final int x2 = cPoint.x;
+                final int y2 = cPoint.y;
+                final int x1 = inter.x;
+                final int y1 = inter.y;
+                r.s_part.set(x1, y1, x2, y2);
+            }
+            for (int i = 0; i < 360; i++) {
+                Point inter = intersectWithLine(r1, UI.extendedSide3);
+                final int x2 = cPoint.x;
+                final int y2 = cPoint.y;
+                final int x1 = inter.x;
+                final int y1 = inter.y;
+                r.t_part.set(x1, y1, x2, y2);
+            }
+            {
+                double x1 = r.f_part.x1,
+                        y1 = r.f_part.y1,
+                        x2 = r.t_part.x1,
+                        y2 = r.t_part.y1;
+                double lengthAB = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+                if (lengthAB > 0) {
+                    double x3 = x2 + (x2 - x1) / lengthAB * 1000;
+                    double y3 = y2 + (y2 - y1) / lengthAB * 1000;
+                    double x4 = x1 - (x2 - x1) / lengthAB * 1000;
+                    double y4 = y1 - (y2 - y1) / lengthAB * 1000;
+                    r.res.set(x3, y3, x4, y4);
+                    rays.add(r);
+                }
+            }
+        }
+    }
+
+    private final List<Ray> rays = new ArrayList<>();
+
+    public boolean moving = false;
+
+    @Override
+    public void onMouseClick() {
+        super.onMouseClick();
+        moving = !moving;
+    }
+
+    @Override
+    public void onGlobalMouseClick(double x, double y) {
+        if (visible) {
+            if (moving) {
+                moving = false;
+            } else {
+                if ((x >= (this.x - (SIZE / 2))) && (y >= (this.y - (SIZE / 2))) && (x <= (this.x + (SIZE / 2))) && (y <= (this.y + (SIZE / 2)))) {
+                    onMouseClick();
+                }
+            }
+        }
+    }
+
+    /**
+     * @author STALKER_2010
+     */
+    public class Ray {
+        public Line f_part = new Line();
+        public Line s_part = new Line();
+        public Line t_part = new Line();
+        public Line res = new Line();
+
+        public void draw(final Graphics g) {
+//            f_part.draw(g);
+//            s_part.draw(g);
+//            t_part.draw(g);
+            res.draw(g);
+        }
+
+    }
+
+    @JsonIgnore
+    public static final int SIZE = 16;
+    @JsonIgnore
+    public static final int SIZE_HALF = 8;
+
+    @Override
+    public void render(Graphics g) {
+        g.setColor(Color.lightGray);
+        g.fillOval(double2int(x) - SIZE_HALF, double2int(y) - SIZE_HALF, SIZE, SIZE);
+        g.setColor(GradientHelper.get());
+        for (final Ray r : rays) {
+            r.draw(g);
+        }
+        g.setColor(Color.lightGray);
+    }
+
+    private Point intersectWithLine(final Point r1, final Line l) {
+        double k1 = ((l.y2 - l.y1) * (r1.x - l.x1) - (l.x2 - l.x1) * (r1.y - l.y1));
+        double k2 = (Math.pow(l.y2 - l.y1, 2) + Math.pow(l.x2 - l.x1, 2));
+        double k = k1;
+        if (k2 != 0) {
+            k /= k2;
+        }
+        double x4 = r1.x - k * (l.y2 - l.y1);
+        double y4 = r1.y + k * (l.x2 - l.x1);
+        return new Point(double2int(x4), double2int(y4));
+    }
+
+    public static int double2int(final double d) {
+        return (int) (d + 0.5d);
+    }
+}

@@ -10,8 +10,9 @@ public class GradientHelper {
     private static final java.util.List<Color> gradient = new ArrayList<>();
 
     static {
-        final int steps = 25 * 20;
+        final int steps = 20 * 20;
         Color color1 = Color.LIGHT_GRAY;
+//        Color color1 = Color.yellow;
         Color color2 = Color.yellow;
         for (int i = 0; i < steps; i++) {
             float ratio = (float) i / (float) steps;
@@ -37,7 +38,7 @@ public class GradientHelper {
 
     public static void update() {
         gradientStep++;
-        if (gradientStep >= 25 * 40) {
+        if (gradientStep >= 20 * 40) {
             gradientStep = 0;
         }
     }
