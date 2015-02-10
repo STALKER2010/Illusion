@@ -12,13 +12,13 @@ import java.awt.*;
 /**
  * @author STALKER_2010
  */
-public class UI extends GameObject {
+public class DeltoidBase extends GameObject {
 
-    public UI() {
+    public DeltoidBase() {
         super();
     }
 
-    public UI(String name) {
+    public DeltoidBase(String name) {
         super(name);
         final Animation a = Resources.animation(sprite);
         a.steps.clear();
@@ -40,7 +40,7 @@ public class UI extends GameObject {
 
     @Override
     public void onGlobalMouseClick(double x, double y) {
-        System.out.println("MOUSE: " + x + "; " + y);
+        //System.out.println("MOUSE: " + x + "; " + y);
     }
 
     public static final Line
@@ -80,21 +80,9 @@ public class UI extends GameObject {
             double x3r = centerX + (x3 - centerX) * Math.cos(angle) - (y3 - centerY) * Math.sin(angle);
             double y3r = centerY + (x3 - centerX) * Math.sin(angle) + (y3 - centerY) * Math.cos(angle);
 
-//            float x1r = (float) ((x1 - centerX) * Math.cos(angle) - (y1 - centerY) * Math.sin(angle) + centerX);
-//            float y1r = (float) ((x1 - centerX) * Math.sin(angle) + (y1 - centerY) * Math.cos(angle) + centerY);
-//
-//            float x2r = (float) ((x2 - centerX) * Math.cos(angle) - (y2 - centerY) * Math.sin(angle) + centerX);
-//            float y2r = (float) ((x2 - centerX) * Math.sin(angle) + (y2 - centerY) * Math.cos(angle) + centerY);
-//
-//            float x3r = (float) ((x3 - centerX) * Math.cos(angle) - (y3 - centerY) * Math.sin(angle) + centerX);
-//            float y3r = (float) ((x3 - centerX) * Math.sin(angle) + (y3 - centerY) * Math.cos(angle) + centerY);
-
             side1.set(x1r, y1r, x2r, y2r);
             side2.set(x2r, y2r, x3r, y3r);
             side3.set(x1r, y1r, x3r, y3r);
-//            side1.set(x1, y1, x2, y2);
-//            side2.set(x2, y2, x3, y3);
-//            side3.set(x1, y1, x3, y3);
         }
         {
             double x3 = side1.x2 + (side1.x2 - side1.x1);

@@ -35,12 +35,12 @@ public class Controller extends GameObject {
         super.onKey(keycode);
         switch (keycode) {
             case (KeyEvent.VK_1): {
-                IllusionGame.instance.currentRoom = "reflection_room";
+                IllusionGame.instance.currentRoom = "parabola_room";
                 mode = MODE_PARABOLIC;
                 break;
             }
             case (KeyEvent.VK_2): {
-                IllusionGame.instance.currentRoom = "reflection_room";
+                IllusionGame.instance.currentRoom = "ellipse_room";
                 mode = MODE_CIRCLE;
                 break;
             }

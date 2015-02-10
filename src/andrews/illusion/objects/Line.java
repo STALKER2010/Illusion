@@ -1,6 +1,6 @@
 package andrews.illusion.objects;
 
-import andrews.illusion.objects.reflection.MainPoint;
+import static andrews.illusion.objects.Utils.*;
 
 import java.awt.*;
 
@@ -26,10 +26,10 @@ public class Line {
     }
 
     public Line set(final double x1, final double y1, final double x2, final double y2) {
-        this.x1 = MainPoint.double2int(x1);
-        this.y1 = MainPoint.double2int(y1);
-        this.x2 = MainPoint.double2int(x2);
-        this.y2 = MainPoint.double2int(y2);
+        this.x1 = double2int(x1);
+        this.y1 = double2int(y1);
+        this.x2 = double2int(x2);
+        this.y2 = double2int(y2);
         return this;
     }
 }

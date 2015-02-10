@@ -1,9 +1,7 @@
-package andrews.illusion.objects.reflection;
+package andrews.illusion.objects.parabola;
 
 import andrews.illusion.IllusionGame;
-import andrews.illusion.objects.Controller;
 import andrews.jengine.Animation;
-import andrews.jengine.DB;
 import andrews.jengine.GameObject;
 import andrews.jengine.modules.Resources;
 
@@ -12,13 +10,13 @@ import java.awt.*;
 /**
  * @author STALKER_2010
  */
-public class ReflLine extends GameObject {
+public class ParabolaBase extends GameObject {
 
-    public ReflLine() {
+    public ParabolaBase() {
         super();
     }
 
-    public ReflLine(String name) {
+    public ParabolaBase(String name) {
         super(name);
         final Animation a = Resources.animation(sprite);
         a.steps.clear();
@@ -30,7 +28,7 @@ public class ReflLine extends GameObject {
     @Override
     public void update() {
         super.update();
-        visible = IllusionGame.instance.currentRoom.equals("reflection_room");
+        visible = IllusionGame.instance.currentRoom.equals("parabola_room");
     }
 
     @Override
@@ -44,10 +42,6 @@ public class ReflLine extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.lightGray);
-        if (((Controller) DB.db.objects.get("controller")).mode == Controller.MODE_PARABOLIC) {
-            g.drawLine(0, 500, 2000, 500);
-        } else {
-            g.drawOval(200, 100, 400, 400);
-        }
+        g.drawLine(0, 500, 2000, 500);
     }
 }

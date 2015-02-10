@@ -15,16 +15,19 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static andrews.illusion.objects.Utils.double2int;
+import static andrews.illusion.objects.Utils.pow2;
+
 /**
  * @author STALKER_2010
  */
-public class MousePoint extends GameObject {
+public class DeltoidMousePoint extends GameObject {
 
-    public MousePoint() {
+    public DeltoidMousePoint() {
         super();
     }
 
-    public MousePoint(String name) {
+    public DeltoidMousePoint(String name) {
         super(name);
         final Animation a = Resources.animation(sprite);
         a.steps.clear();
@@ -60,7 +63,7 @@ public class MousePoint extends GameObject {
             double newAngleInDegrees = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
             if (newAngleInDegrees != angleInDegrees) {
                 angleInDegrees = newAngleInDegrees;
-                UI.rotateTriangle(angleInDegrees);
+                DeltoidBase.rotateTriangle(angleInDegrees);
                 recalculate();
             }
         }
@@ -84,7 +87,10 @@ public class MousePoint extends GameObject {
 
             final Point r1 = new Point(cPoint.x, cPoint.y);
             for (int i = 0; i < 360; i++) {
-                Point inter = intersectWithLine(r1, UI.extendedSide1);
+                Point inter = intersectWithLine(r1, DeltoidBase.extendedSide1);
+                if (inter == null) {
+                    continue;
+                }
                 final int x2 = cPoint.x;
                 final int y2 = cPoint.y;
                 final int x1 = inter.x;
@@ -92,7 +98,10 @@ public class MousePoint extends GameObject {
                 r.f_part.set(x1, y1, x2, y2);
             }
             for (int i = 0; i < 360; i++) {
-                Point inter = intersectWithLine(r1, UI.extendedSide2);
+                Point inter = intersectWithLine(r1, DeltoidBase.extendedSide2);
+                if (inter == null) {
+                    continue;
+                }
                 final int x2 = cPoint.x;
                 final int y2 = cPoint.y;
                 final int x1 = inter.x;
@@ -100,7 +109,10 @@ public class MousePoint extends GameObject {
                 r.s_part.set(x1, y1, x2, y2);
             }
             for (int i = 0; i < 360; i++) {
-                Point inter = intersectWithLine(r1, UI.extendedSide3);
+                Point inter = intersectWithLine(r1, DeltoidBase.extendedSide3);
+                if (inter == null) {
+                    continue;
+                }
                 final int x2 = cPoint.x;
                 final int y2 = cPoint.y;
                 final int x1 = inter.x;
@@ -112,8 +124,8 @@ public class MousePoint extends GameObject {
                         y1 = r.f_part.y1,
                         x2 = r.t_part.x1,
                         y2 = r.t_part.y1;
-                double lengthAB = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-                if (lengthAB > 0) {
+                double lengthAB = Math.sqrt(pow2(x1 - x2) + pow2(y1 - y2));
+                if (lengthAB > 1) {
                     double x3 = x2 + (x2 - x1) / lengthAB * 1000;
                     double y3 = y2 + (y2 - y1) / lengthAB * 1000;
                     double x4 = x1 - (x2 - x1) / lengthAB * 1000;
@@ -182,19 +194,17 @@ public class MousePoint extends GameObject {
         g.setColor(Color.lightGray);
     }
 
-    private Point intersectWithLine(final Point r1, final Line l) {
-        double k1 = ((l.y2 - l.y1) * (r1.x - l.x1) - (l.x2 - l.x1) * (r1.y - l.y1));
-        double k2 = (Math.pow(l.y2 - l.y1, 2) + Math.pow(l.x2 - l.x1, 2));
+    public Point intersectWithLine(final Point r1, final Line l) {
+        double k1 = ((l.y2 - l.y1) * (r1.x - l.x1)) - ((l.x2 - l.x1) * (r1.y - l.y1));
+        double k2 = (pow2(l.y2 - l.y1) + pow2(l.x2 - l.x1));
         double k = k1;
         if (k2 != 0) {
             k /= k2;
+        } else {
+            return null;
         }
         double x4 = r1.x - k * (l.y2 - l.y1);
         double y4 = r1.y + k * (l.x2 - l.x1);
         return new Point(double2int(x4), double2int(y4));
-    }
-
-    public static int double2int(final double d) {
-        return (int) (d + 0.5d);
     }
 }

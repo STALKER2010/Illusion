@@ -1,4 +1,4 @@
-package andrews.illusion.objects.reflection;
+package andrews.illusion.objects.ellipse;
 
 import andrews.illusion.IllusionGame;
 import andrews.illusion.objects.Controller;
@@ -13,22 +13,23 @@ import javafx.util.Pair;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static andrews.illusion.objects.Utils.double2int;
+
 /**
  * @author STALKER_2010
  */
-public class MainPoint extends GameObject {
+public class EllipseMousePoint extends GameObject {
 
-    public MainPoint() {
+    public EllipseMousePoint() {
         super();
     }
 
-    public MainPoint(String name) {
+    public EllipseMousePoint(String name) {
         super(name);
         final Animation a = Resources.animation(sprite);
         a.steps.clear();
@@ -45,7 +46,7 @@ public class MainPoint extends GameObject {
     @Override
     public void update() {
         super.update();
-        visible = IllusionGame.instance.currentRoom.equals("reflection_room");
+        visible = IllusionGame.instance.currentRoom.equals("ellipse_room");
         if (moving) {
             PointerInfo a = MouseInfo.getPointerInfo();
             Point point = new Point(a.getLocation());
@@ -67,7 +68,7 @@ public class MainPoint extends GameObject {
             ctrl = (Controller) DB.db.objects.get("controller");
         }
         rays.clear();
-        int incMode = (ctrl.mode == Controller.MODE_PARABOLIC) ? 2 : 5;
+        int incMode = 5;
         if (ctrl.isLimited) incMode = incMode * 5;
         final int maxMode = (ctrl.isLimited) ? (incMode * 4) + 1 : 360;
         for (float i = 0; i < maxMode; i += incMode) {
@@ -77,13 +78,9 @@ public class MainPoint extends GameObject {
             double endX = x + LINES_LENGTH * Math.sin(angle);
             double endY = y + LINES_LENGTH * Math.cos(angle);
             Pair<Double, Double> inter = null;
-            if (ctrl.mode == Controller.MODE_PARABOLIC) {
-                inter = intersectWithLine(endX, endY);
-            } else {
-                final List<Pair<Double, Double>> interList = intersectWithCircle(endX, endY, new Point(400, 300), 200);
-                if (interList.size() > 0) {
-                    inter = interList.get(0);
-                }
+            final List<Pair<Double, Double>> interList = intersectWithCircle(endX, endY, new Point(400, 300), 200);
+            if (interList.size() > 0) {
+                inter = interList.get(0);
             }
             if (inter != null) {
                 final int x2 = double2int(x);
@@ -137,44 +134,12 @@ public class MainPoint extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.lightGray);
-        g.fillOval(Long.valueOf(Math.round(x)).intValue() - (SIZE / 2), Long.valueOf(Math.round(y)).intValue() - (SIZE / 2), SIZE, SIZE);
+        g.fillOval(double2int(x) - (SIZE / 2), double2int(y) - (SIZE / 2), SIZE, SIZE);
         g.setColor(GradientHelper.get());
         for (final Ray r : rays) {
             r.draw(g);
         }
         g.setColor(Color.lightGray);
-    }
-
-    private Pair<Double, Double> intersectWithLine(final double endX, final double endY) {
-        if (Line2D.linesIntersect(x, y, endX, endY, 0, 500, 1094, 500)) {
-            final Point r1 = new Point();
-            final Point r2 = new Point();
-            final Point l1 = new Point(0, 500);
-            final Point l2 = new Point(1094, 500);
-            {
-                r1.setLocation(x, y);
-                r2.setLocation(endX, endY);
-            }
-
-            double a1 = endY - y;
-            if (endX - x != 0) {
-                a1 = (endY - y) / (endX - x);
-            }
-            double b1 = y - a1 * x;
-            double a2 = l2.getY() - l1.getY();
-            if (l2.getX() - l1.getX() != 0) {
-                a2 /= (l2.getX() - l1.getX());
-            }
-            double b2 = l1.getY() - a2 * l1.getX();
-            double lx = -(b1 - b2);
-            if ((a1 - a2) != 0) {
-                lx /= (a1 - a2);
-            }
-            double ly = Math.max(l1.getY(), l2.getY());
-
-            return new Pair<>(lx, ly);
-        }
-        return null;
     }
 
     public List<Pair<Double, Double>> intersectWithCircle(double endX,
@@ -207,9 +172,5 @@ public class MainPoint extends GameObject {
         Pair<Double, Double> p2 = new Pair<>(x - baX * abScalingFactor2, y
                 - baY * abScalingFactor2);
         return Arrays.asList(p1, p2);
-    }
-
-    public static int double2int(final double d) {
-        return Long.valueOf(Math.round(d)).intValue();
     }
 }

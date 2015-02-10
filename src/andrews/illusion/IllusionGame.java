@@ -4,13 +4,16 @@ import andrews.illusion.background.GameBackground;
 import andrews.illusion.objects.Controller;
 import andrews.illusion.objects.astroid.Axis;
 import andrews.illusion.objects.astroid.Communicator;
-import andrews.illusion.objects.deltoid.MousePoint;
-import andrews.illusion.objects.deltoid.UI;
-import andrews.illusion.objects.reflection.MainPoint;
-import andrews.illusion.objects.reflection.ReflLine;
+import andrews.illusion.objects.deltoid.DeltoidBase;
+import andrews.illusion.objects.deltoid.DeltoidMousePoint;
+import andrews.illusion.objects.ellipse.EllipseBase;
+import andrews.illusion.objects.ellipse.EllipseMousePoint;
+import andrews.illusion.objects.parabola.ParabolaBase;
+import andrews.illusion.objects.parabola.ParabolaMousePoint;
 import andrews.illusion.rooms.AstroidRoom;
 import andrews.illusion.rooms.DeltoidRoom;
-import andrews.illusion.rooms.ReflectionRoom;
+import andrews.illusion.rooms.EllipseRoom;
+import andrews.illusion.rooms.ParabolaRoom;
 import andrews.jengine.DB;
 import andrews.jengine.Game;
 
@@ -35,11 +38,19 @@ public class IllusionGame extends Game {
             DB.db.objects.put(r.name, r);
         }
         {
-            final MainPoint r = new MainPoint("main_point");
+            final ParabolaMousePoint r = new ParabolaMousePoint("parabola_mouse_point");
             DB.db.objects.put(r.name, r);
         }
         {
-            final ReflLine r = new ReflLine("refl_line");
+            final ParabolaBase r = new ParabolaBase("parabola_base");
+            DB.db.objects.put(r.name, r);
+        }
+        {
+            final EllipseMousePoint r = new EllipseMousePoint("ellipse_mouse_point");
+            DB.db.objects.put(r.name, r);
+        }
+        {
+            final EllipseBase r = new EllipseBase("ellipse_base");
             DB.db.objects.put(r.name, r);
         }
         {
@@ -51,15 +62,19 @@ public class IllusionGame extends Game {
             DB.db.objects.put(r.name, r);
         }
         {
-            final MousePoint r = new MousePoint("mouse_point");
+            final DeltoidMousePoint r = new DeltoidMousePoint("deltoid_mouse_point");
             DB.db.objects.put(r.name, r);
         }
         {
-            final UI r = new UI("ui");
+            final DeltoidBase r = new DeltoidBase("deltoid_base");
             DB.db.objects.put(r.name, r);
         }
         {
-            final ReflectionRoom r = new ReflectionRoom("reflection_room");
+            final ParabolaRoom r = new ParabolaRoom("parabola_room");
+            DB.db.rooms.put(r.name, r);
+        }
+        {
+            final EllipseRoom r = new EllipseRoom("ellipse_room");
             DB.db.rooms.put(r.name, r);
         }
         {
@@ -70,7 +85,7 @@ public class IllusionGame extends Game {
             final DeltoidRoom r = new DeltoidRoom("deltoid_room");
             DB.db.rooms.put(r.name, r);
         }
-        currentRoom = "reflection_room";
+        currentRoom = "parabola_room";
         return true;
     }
 }
