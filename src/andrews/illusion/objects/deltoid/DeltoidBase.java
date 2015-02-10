@@ -56,10 +56,6 @@ public class DeltoidBase extends GameObject {
         {
             angle = (float) Math.toRadians(angle); // Angle to rotate
 
-            // Size of triangle
-            final float height = 200;
-            final float width = 200;
-
             // Display coordinates where triangle will be drawn
             float centerX = 400;
             float centerY = 300;

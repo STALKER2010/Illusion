@@ -28,7 +28,7 @@ public class IllusionGame extends Game {
 
     @Override
     public boolean init() {
-        if (!super.init()) return false;
+        if (super.init()) return true;
         {
             final GameBackground b = new GameBackground("game_bg");
             DB.db.backgrounds.put(b.name, b);
@@ -86,6 +86,6 @@ public class IllusionGame extends Game {
             DB.db.rooms.put(r.name, r);
         }
         currentRoom = "parabola_room";
-        return true;
+        return false;
     }
 }
