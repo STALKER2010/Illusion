@@ -22,7 +22,6 @@ import static andrews.illusion.objects.Utils.pow2;
  * @author STALKER_2010
  */
 public class DeltoidMousePoint extends GameObject {
-
     public DeltoidMousePoint() {
         super();
     }
