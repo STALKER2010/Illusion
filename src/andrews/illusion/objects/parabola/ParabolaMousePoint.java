@@ -17,7 +17,7 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import static andrews.illusion.objects.Utils.double2int;
+import static andrews.illusion.objects.Utils.d2i;
 
 /**
  * @author STALKER_2010
@@ -79,10 +79,10 @@ public class ParabolaMousePoint extends GameObject {
             Pair<Double, Double> inter;
             inter = intersectWithLine(endX, endY);
             if (inter != null) {
-                final int x2 = double2int(x);
-                final int y2 = double2int(y);
-                final int x1 = double2int(inter.getKey());
-                final int y1 = double2int(inter.getValue());
+                final int x2 = d2i(x);
+                final int y2 = d2i(y);
+                final int x1 = d2i(inter.getKey());
+                final int y1 = d2i(inter.getValue());
                 r.f_part.set(x1, y1, x2, y2);
                 double dx = x1 - x2;
                 double dy = y1 - y2;

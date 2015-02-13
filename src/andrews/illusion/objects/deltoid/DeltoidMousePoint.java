@@ -2,6 +2,7 @@ package andrews.illusion.objects.deltoid;
 
 import andrews.illusion.IllusionGame;
 import andrews.illusion.objects.Controller;
+import andrews.illusion.objects.DPoint;
 import andrews.illusion.objects.GradientHelper;
 import andrews.illusion.objects.Line;
 import andrews.jengine.Animation;
@@ -15,7 +16,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static andrews.illusion.objects.Utils.double2int;
+import static andrews.illusion.objects.Utils.d2i;
 import static andrews.illusion.objects.Utils.pow2;
 
 /**
@@ -35,17 +36,18 @@ public class DeltoidMousePoint extends GameObject {
         visible = true;
         x = 400;
         y = 265;
-        for (int i = 0; i < 360; i += 1) {
+        for (int i = 0; i < 360; i++) {
             final double angle = Math.toRadians(i);
             final double px = 400 + (200 * Math.cos(angle));
             final double py = 300 + (200 * Math.sin(angle));
-            circlePoints.add(new Point(double2int(px), double2int(py)));
+            circlePoints.add(new DPoint(px, py));
         }
         recalculate();
     }
 
     private Controller ctrl = null;
     private double angleInDegrees = 0;
+    private boolean skipStep = true;
 
     @Override
     public void update() {
@@ -62,8 +64,11 @@ public class DeltoidMousePoint extends GameObject {
             double newAngleInDegrees = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
             if (newAngleInDegrees != angleInDegrees) {
                 angleInDegrees = newAngleInDegrees;
-                DeltoidBase.rotateTriangle(angleInDegrees);
-                recalculate();
+                if (skipStep) {
+                    DeltoidBase.rotateTriangle(angleInDegrees);
+                    recalculate();
+                }
+                skipStep = !skipStep;
             }
         }
     }
@@ -74,48 +79,47 @@ public class DeltoidMousePoint extends GameObject {
         recalculate();
     }
 
-    List<Point> circlePoints = new ArrayList<>();
+    List<DPoint> circlePoints = new ArrayList<>();
 
     private void recalculate() {
         if (ctrl == null) {
             ctrl = (Controller) DB.db.objects.get("controller");
         }
         rays.clear();
-        for (final Point cPoint : circlePoints) {
+        for (final DPoint cPoint : circlePoints) {
             final Ray r = new Ray();
 
-            final Point r1 = new Point(cPoint.x, cPoint.y);
             for (int i = 0; i < 360; i++) {
-                Point inter = intersectWithLine(r1, DeltoidBase.extendedSide1);
+                DPoint inter = intersectWithLine(cPoint, DeltoidBase.extendedSide1);
                 if (inter == null) {
                     continue;
                 }
-                final int x2 = cPoint.x;
-                final int y2 = cPoint.y;
-                final int x1 = inter.x;
-                final int y1 = inter.y;
+                final double x2 = cPoint.x;
+                final double y2 = cPoint.y;
+                final double x1 = inter.x;
+                final double y1 = inter.y;
                 r.f_part.set(x1, y1, x2, y2);
             }
             for (int i = 0; i < 360; i++) {
-                Point inter = intersectWithLine(r1, DeltoidBase.extendedSide2);
+                DPoint inter = intersectWithLine(cPoint, DeltoidBase.extendedSide2);
                 if (inter == null) {
                     continue;
                 }
-                final int x2 = cPoint.x;
-                final int y2 = cPoint.y;
-                final int x1 = inter.x;
-                final int y1 = inter.y;
+                final double x2 = cPoint.x;
+                final double y2 = cPoint.y;
+                final double x1 = inter.x;
+                final double y1 = inter.y;
                 r.s_part.set(x1, y1, x2, y2);
             }
             for (int i = 0; i < 360; i++) {
-                Point inter = intersectWithLine(r1, DeltoidBase.extendedSide3);
+                DPoint inter = intersectWithLine(cPoint, DeltoidBase.extendedSide3);
                 if (inter == null) {
                     continue;
                 }
-                final int x2 = cPoint.x;
-                final int y2 = cPoint.y;
-                final int x1 = inter.x;
-                final int y1 = inter.y;
+                final double x2 = cPoint.x;
+                final double y2 = cPoint.y;
+                final double x1 = inter.x;
+                final double y1 = inter.y;
                 r.t_part.set(x1, y1, x2, y2);
             }
             {
@@ -185,7 +189,7 @@ public class DeltoidMousePoint extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.lightGray);
-        g.fillOval(double2int(x) - SIZE_HALF, double2int(y) - SIZE_HALF, SIZE, SIZE);
+        g.fillOval(d2i(x) - SIZE_HALF, d2i(y) - SIZE_HALF, SIZE, SIZE);
         g.setColor(GradientHelper.get());
         for (final Ray r : rays) {
             r.draw(g);
@@ -193,7 +197,7 @@ public class DeltoidMousePoint extends GameObject {
         g.setColor(Color.lightGray);
     }
 
-    public Point intersectWithLine(final Point r1, final Line l) {
+    public DPoint intersectWithLine(final DPoint r1, final Line l) {
         double k1 = ((l.y2 - l.y1) * (r1.x - l.x1)) - ((l.x2 - l.x1) * (r1.y - l.y1));
         double k2 = (pow2(l.y2 - l.y1) + pow2(l.x2 - l.x1));
         double k = k1;
@@ -204,6 +208,6 @@ public class DeltoidMousePoint extends GameObject {
         }
         double x4 = r1.x - k * (l.y2 - l.y1);
         double y4 = r1.y + k * (l.x2 - l.x1);
-        return new Point(double2int(x4), double2int(y4));
+        return new DPoint(x4, y4);
     }
 }

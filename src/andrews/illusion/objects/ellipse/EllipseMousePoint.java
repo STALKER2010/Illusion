@@ -2,6 +2,7 @@ package andrews.illusion.objects.ellipse;
 
 import andrews.illusion.IllusionGame;
 import andrews.illusion.objects.Controller;
+import andrews.illusion.objects.DPoint;
 import andrews.illusion.objects.GradientHelper;
 import andrews.illusion.objects.Ray;
 import andrews.jengine.Animation;
@@ -18,7 +19,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static andrews.illusion.objects.Utils.double2int;
+import static andrews.illusion.objects.Utils.d2i;
 
 /**
  * @author STALKER_2010
@@ -63,6 +64,8 @@ public class EllipseMousePoint extends GameObject {
         recalculate();
     }
 
+    private static final DPoint CIRCLE_CENTER = new DPoint(400d, 300d);
+
     private void recalculate() {
         if (ctrl == null) {
             ctrl = (Controller) DB.db.objects.get("controller");
@@ -77,16 +80,17 @@ public class EllipseMousePoint extends GameObject {
             final double angle = Math.toRadians(i);
             double endX = x + LINES_LENGTH * Math.sin(angle);
             double endY = y + LINES_LENGTH * Math.cos(angle);
-            Pair<Double, Double> inter = null;
-            final List<Pair<Double, Double>> interList = intersectWithCircle(endX, endY, new Point(400, 300), 200);
-            if (interList.size() > 0) {
+            Pair<Double, Double> inter;
+            final List<Pair<Double, Double>> interList = intersectWithCircle(
+                    new DPoint(x, y),
+                    new DPoint(endX, endY),
+                    CIRCLE_CENTER, 200);
+            if (!interList.isEmpty()) {
                 inter = interList.get(0);
-            }
-            if (inter != null) {
-                final int x2 = double2int(x);
-                final int y2 = double2int(y);
-                final int x1 = double2int(inter.getKey());
-                final int y1 = double2int(inter.getValue());
+                final double x2 = x;
+                final double y2 = y;
+                final double x1 = inter.getKey();
+                final double y1 = inter.getValue();
                 r.f_part.set(x1, y1, x2, y2);
                 double dx = x1 - x2;
                 double dy = y1 - y2;
@@ -134,7 +138,7 @@ public class EllipseMousePoint extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.lightGray);
-        g.fillOval(double2int(x) - (SIZE / 2), double2int(y) - (SIZE / 2), SIZE, SIZE);
+        g.fillOval(d2i(x) - (SIZE / 2), d2i(y) - (SIZE / 2), SIZE, SIZE);
         g.setColor(GradientHelper.get());
         for (final Ray r : rays) {
             r.draw(g);
@@ -142,12 +146,11 @@ public class EllipseMousePoint extends GameObject {
         g.setColor(Color.lightGray);
     }
 
-    public List<Pair<Double, Double>> intersectWithCircle(double endX,
-                                                          double endY, Point center, double radius) {
-        double baX = endX - x;
-        double baY = endY - y;
-        double caX = center.x - x;
-        double caY = center.y - y;
+    public static List<Pair<Double, Double>> intersectWithCircle(DPoint start, DPoint end, DPoint center, double radius) {
+        double baX = end.getX() - start.getX();
+        double baY = end.getY() - start.getY();
+        double caX = center.x - start.getX();
+        double caY = center.y - start.getY();
 
         double a = baX * baX + baY * baY;
         double bBy2 = baX * caX + baY * caY;
@@ -162,14 +165,14 @@ public class EllipseMousePoint extends GameObject {
         }
         double tmpSqrt = Math.sqrt(disc);
         double abScalingFactor1 = -pBy2 + tmpSqrt;
-        double abScalingFactor2 = -pBy2 - tmpSqrt;
 
-        Pair<Double, Double> p1 = new Pair<>(x - baX * abScalingFactor1, y
+        Pair<Double, Double> p1 = new Pair<>(start.getX() - baX * abScalingFactor1, start.getY()
                 - baY * abScalingFactor1);
         if (disc == 0) {
             return Collections.singletonList(p1);
         }
-        Pair<Double, Double> p2 = new Pair<>(x - baX * abScalingFactor2, y
+        double abScalingFactor2 = -pBy2 - tmpSqrt;
+        Pair<Double, Double> p2 = new Pair<>(start.getX() - baX * abScalingFactor2, start.getY()
                 - baY * abScalingFactor2);
         return Arrays.asList(p1, p2);
     }

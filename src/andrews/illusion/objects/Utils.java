@@ -4,7 +4,7 @@ package andrews.illusion.objects;
  * @author STALKER_2010
  */
 public class Utils {
-    public static int double2int(final double d) {
+    public static int d2i(final double d) {
         return (int) (d + 0.5d);
     }
 
