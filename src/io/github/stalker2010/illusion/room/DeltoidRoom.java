@@ -21,13 +21,14 @@ public class DeltoidRoom extends IllusionRoom {
     }
 
     private double angleInDegrees = 0;
-    List<DPoint> circlePoints = new ArrayList<>();
+    public List<DPoint> circlePoints = new ArrayList<>();
     private final List<Ray> rays = new CopyOnWriteArrayList<>();
 
     @Override
     public void recalculate() {
         if (circlePoints.isEmpty()) {
-            for (float i = 0; i < 360; i += 0.05) {
+            final int mod = (Controller.isLimited) ? 60 : 1;
+            for (float i = 0; i < 360; i += mod) {
                 final double angle = Math.toRadians(i);
                 final double px = 400 + (200 * Math.cos(angle));
                 final double py = 300 + (200 * Math.sin(angle));
@@ -109,9 +110,11 @@ public class DeltoidRoom extends IllusionRoom {
         public Line res = new Line();
 
         public void draw(final Graphics g, final float scale) {
-//            f_part.draw(g, scale);
-//            s_part.draw(g, scale);
-//            t_part.draw(g, scale);
+            if (Controller.isLimited) {
+                f_part.draw(g, scale);
+                s_part.draw(g, scale);
+                t_part.draw(g, scale);
+            }
             res.draw(g, scale);
         }
 

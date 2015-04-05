@@ -4,9 +4,9 @@ import io.github.stalker2010.illusion.object.GradientHelper;
 import io.github.stalker2010.illusion.object.Line;
 import io.github.stalker2010.jengine.GameObject;
 
-import static io.github.stalker2010.illusion.object.Utils.d2i;
-
 import java.awt.*;
+
+import static io.github.stalker2010.illusion.object.Utils.d2i;
 
 /**
  * @author STALKER_2010

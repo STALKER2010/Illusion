@@ -25,6 +25,7 @@ public class GameObject {
         animation.isPlaying = false;
         Game.instance.resources.animations.generated.put(this.sprite, animation);
     }
+
     protected void noSprite() {
         final Animation a = Resources.animation(sprite);
         a.steps.clear();
@@ -39,6 +40,7 @@ public class GameObject {
     public void render(Graphics g) {
         render(g, 1.0f);
     }
+
     public void render(Graphics g, float scale) {
         final Animation animation = Resources.animation(sprite);
         if (animation != null) {

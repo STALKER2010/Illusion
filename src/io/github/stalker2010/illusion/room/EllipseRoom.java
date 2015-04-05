@@ -24,6 +24,7 @@ public class EllipseRoom extends IllusionRoom {
     }
 
     private static final DPoint CIRCLE_CENTER = new DPoint(400d, 300d);
+
     @Override
     public void recalculate() {
         rays.clear();

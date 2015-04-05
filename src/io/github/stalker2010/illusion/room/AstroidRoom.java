@@ -1,7 +1,5 @@
 package io.github.stalker2010.illusion.room;
 
-import io.github.stalker2010.illusion.object.IllusionRoom;
-
 /**
  * @author STALKER_2010
  */

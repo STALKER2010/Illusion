@@ -2,9 +2,9 @@ package io.github.stalker2010.illusion.object.parabola;
 
 import io.github.stalker2010.jengine.GameObject;
 
-import static io.github.stalker2010.illusion.object.Utils.d2i;
-
 import java.awt.*;
+
+import static io.github.stalker2010.illusion.object.Utils.d2i;
 
 /**
  * @author STALKER_2010

@@ -8,6 +8,7 @@ import javafx.util.Pair;
 
 import java.awt.*;
 import java.util.ArrayList;
+
 import static io.github.stalker2010.illusion.object.Utils.d2i;
 
 /**

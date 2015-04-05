@@ -1,5 +1,6 @@
-package io.github.stalker2010.illusion.object;
+package io.github.stalker2010.illusion.room;
 
+import io.github.stalker2010.illusion.object.MousePoint;
 import io.github.stalker2010.jengine.DB;
 import io.github.stalker2010.jengine.Room;
 

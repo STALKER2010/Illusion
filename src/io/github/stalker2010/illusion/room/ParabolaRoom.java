@@ -1,6 +1,9 @@
 package io.github.stalker2010.illusion.room;
 
-import io.github.stalker2010.illusion.object.*;
+import io.github.stalker2010.illusion.object.Controller;
+import io.github.stalker2010.illusion.object.GradientHelper;
+import io.github.stalker2010.illusion.object.MousePoint;
+import io.github.stalker2010.illusion.object.Ray;
 import javafx.util.Pair;
 
 import java.awt.*;

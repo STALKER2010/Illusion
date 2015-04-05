@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2acbbeba-62d3-481f-ae1a-51a0539a7b64" name="Default" comment="" />
+    <list default="true" id="2acbbeba-62d3-481f-ae1a-51a0539a7b64" name="Default" comment="Fixed IllusionRoom location, added limited mode for deltoid , fixed a couple of bugs.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="C:\Users\Family\IdeaProjects\Illusion\out\production\Illusion\io\github\stalker2010\illusion\object\IllusionRoom.class" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Family\IdeaProjects\Illusion\src\io\github\stalker2010\illusion\object\IllusionRoom.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/IllusionRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/AstroidRoom.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/AstroidRoom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/object/astroid/Communicator.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/object/astroid/Communicator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/object/Controller.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/object/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/DeltoidRoom$Ray.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/DeltoidRoom$Ray.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/DeltoidRoom.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/DeltoidRoom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/EllipseRoom.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/EllipseRoom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/jengine/GameObject.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/jengine/GameObject.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/ParabolaRoom.class" afterPath="$PROJECT_DIR$/out/production/Illusion/io/github/stalker2010/illusion/room/ParabolaRoom.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/AstroidRoom.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/AstroidRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/astroid/Communicator.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/astroid/Communicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/deltoid/DeltoidBase.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/deltoid/DeltoidBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/DeltoidRoom.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/DeltoidRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/EllipseRoom.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/EllipseRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/jengine/GameObject.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/jengine/GameObject.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/parabola/ParabolaBase.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/parabola/ParabolaBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/ParabolaRoom.java" afterPath="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/ParabolaRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Illusion.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +49,8 @@
       <file leaf-file-name="DeltoidRoom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/DeltoidRoom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6363636">
-              <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.21974148">
+              <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,12 +58,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParabolaRoom.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/ParabolaRoom.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="14" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
-              <folding />
+              <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <folding>
+                <element signature="e#3693#3694#0" expanded="true" />
+                <element signature="e#3721#3722#0" expanded="true" />
+                <element signature="e#3796#3797#0" expanded="true" />
+                <element signature="e#3824#3825#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,6 +81,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -94,7 +125,6 @@
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/jengine/GameObject.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/ellipse/EllipseMousePoint.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/deltoid/DeltoidMousePoint.java" />
-        <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/parabola/ParabolaMousePoint.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/IllusionRoom.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/EllipseRoom.java" />
@@ -108,6 +138,8 @@
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/ParabolaRoom.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/jengine/Room.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/jengine/render/Simple2DRender.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java" />
         <option value="$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/DeltoidRoom.java" />
       </list>
     </option>
@@ -125,7 +157,7 @@
     <option name="width" value="1296" />
     <option name="height" value="1010" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -150,8 +182,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -414,7 +447,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -436,6 +468,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -713,26 +746,24 @@
       <workItem from="1426600665498" duration="9302000" />
       <workItem from="1427620155674" duration="282000" />
       <workItem from="1427621565220" duration="24621000" />
+      <workItem from="1428239734834" duration="1280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48568000" />
+    <option name="totallyTimeSpent" value="49848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Analyze Dataflow from" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Analyze Dataflow to" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993174" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -750,8 +781,11 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Analyze Dataflow to" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Analyze Dataflow from" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993174" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -765,6 +799,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed IllusionRoom location, added limited mode for deltoid , fixed a couple of bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed IllusionRoom location, added limited mode for deltoid , fixed a couple of bugs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1020,26 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12690952">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/EllipseRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.272">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#539#540#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/MenuItemObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1057,20 +1075,6 @@
           <folding>
             <element signature="e#6318#6361#0" expanded="true" />
             <element signature="e#6806#6849#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/IllusionRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.476">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#443#444#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1101,29 +1105,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/AstroidRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.476">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/IllusionRender.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/jengine/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1178,18 +1164,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/ParabolaRoom.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33960047">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/jengine/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/AstroidRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42424244">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/EllipseRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09090909">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/IllusionRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42424244">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/object/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="14" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <folding>
+            <element signature="e#3693#3694#0" expanded="true" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3796#3797#0" expanded="true" />
+            <element signature="e#3824#3825#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/ParabolaRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.5454545">
+          <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/stalker2010/illusion/room/DeltoidRoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6363636">
-          <caret line="32" column="64" selection-start-line="32" selection-start-column="64" selection-end-line="32" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.21974148">
+          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
