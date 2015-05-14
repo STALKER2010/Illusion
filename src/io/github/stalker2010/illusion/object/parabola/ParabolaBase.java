@@ -18,6 +18,7 @@ public class ParabolaBase extends GameObject {
     public ParabolaBase(String name) {
         super(name);
         noSprite();
+        depth = 10;
         visible = true;
     }
 

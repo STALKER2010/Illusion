@@ -71,14 +71,19 @@ public class IllusionRender extends BaseRender {
                     }
                 });
         mainBS.show();
+//        mainBS.dispose();
         mainGL.dispose();
     }
 
     public void resetAndFixEverything() {
-        if (mainGL != null) mainGL.dispose();
-        mainGL = null;
-        mainBS.dispose();
-        mainBS = null;
+        if (mainGL != null) {
+            mainGL.dispose();
+            mainGL = null;
+        }
+        if (mainBS != null) {
+            mainBS.dispose();
+            mainBS = null;
+        }
         strategies.clear();
         init();
     }

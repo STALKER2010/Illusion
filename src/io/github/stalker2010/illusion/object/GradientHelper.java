@@ -11,8 +11,7 @@ public class GradientHelper {
 
     static {
         final int steps = 20 * 20;
-        Color color1 = Color.LIGHT_GRAY;
-//        Color color1 = Color.yellow;
+        Color color1 = new Color(255, 255, 255);
         Color color2 = Color.yellow;
         for (int i = 0; i < steps; i++) {
             float ratio = (float) i / (float) steps;
@@ -23,7 +22,7 @@ public class GradientHelper {
             gradient.add(stepColor);
         }
         color1 = Color.yellow;
-        color2 = Color.LIGHT_GRAY;
+        color2 = new Color(255, 255, 255);
         for (int i = 0; i < steps; i++) {
             float ratio = (float) i / (float) steps;
             int red = (int) (color2.getRed() * ratio + color1.getRed() * (1 - ratio));

@@ -143,6 +143,7 @@ public class IllusionGame extends Game {
                 break;
             }
         }
+        sheduleReset = true;
     }
 
     public boolean moveToDefaultPlace(final MenuItemObject item) {

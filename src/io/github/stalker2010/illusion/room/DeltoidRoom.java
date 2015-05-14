@@ -27,7 +27,7 @@ public class DeltoidRoom extends IllusionRoom {
     @Override
     public void recalculate() {
         if (circlePoints.isEmpty()) {
-            final int mod = (Controller.isLimited) ? 60 : 1;
+            final float mod = (Controller.isLimited) ? 60f : 1f;
             for (float i = 0; i < 360; i += mod) {
                 final double angle = Math.toRadians(i);
                 final double px = 400 + (200 * Math.cos(angle));
@@ -51,9 +51,6 @@ public class DeltoidRoom extends IllusionRoom {
 
             {
                 final DPoint inter = intersectWithLine(cPoint, DeltoidBase.extendedSide1);
-//                if (inter == null) {
-//                    continue;
-//                }
                 final double x1 = inter.x;
                 final double y1 = inter.y;
                 final double x2 = cPoint.x;
@@ -62,9 +59,6 @@ public class DeltoidRoom extends IllusionRoom {
             }
             {
                 final DPoint inter = intersectWithLine(cPoint, DeltoidBase.extendedSide2);
-//                if (inter == null) {
-//                    continue;
-//                }
                 final double x1 = inter.x;
                 final double y1 = inter.y;
                 final double x2 = cPoint.x;
@@ -73,9 +67,6 @@ public class DeltoidRoom extends IllusionRoom {
             }
             {
                 final DPoint inter = intersectWithLine(cPoint, DeltoidBase.extendedSide3);
-//                if (inter == null) {
-//                    continue;
-//                }
                 final double x1 = inter.x;
                 final double y1 = inter.y;
                 final double x2 = cPoint.x;

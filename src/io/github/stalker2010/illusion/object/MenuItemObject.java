@@ -44,7 +44,6 @@ public class MenuItemObject extends GameObject {
         final Room to = DB.db.rooms.get(IllusionGame.instance.currentRoom);
         DB.db.rooms.get(to.name).onRoomEnter(prevRoom);
         ((IllusionGame) IllusionGame.instance).changeIntoRoom(from, to);
-        IllusionGame.instance.sheduleReset = true;
         return true;
     }
 
@@ -70,6 +69,8 @@ public class MenuItemObject extends GameObject {
     public void render(Graphics g, float scale) {
         final IllusionRender render = (IllusionRender) IllusionGame.instance.render;
         final Shape clipDefault = g.getClip();
+        final boolean isAstroid = name.equals("menu_object_astroid");
+        final int astroid_diff = -30;
         render.strategies.stream()
                 .filter(IllusionRender.RoomRender::isCorrect)
                 .filter(o -> o.getRoom().name.equals(menuNameToRoomName()))
@@ -78,6 +79,9 @@ public class MenuItemObject extends GameObject {
                     g.setClip(d2i(x), d2i(y), 294, 200);
                     g.translate(d2i(x), d2i(y));
                     r.render(g, SCALE_CONST);
+                    if (isAstroid) {
+                        g.translate(astroid_diff, 0);
+                    }
                     render.objs.stream()
                             .filter(o1 -> r.objectsIDs.contains(o1.name))
                             .filter(o1 -> o1.visible)
@@ -89,7 +93,11 @@ public class MenuItemObject extends GameObject {
                                 }
                             });
                     g.setClip(clipDefault);
-                    g.translate(-d2i(x), -d2i(y));
+                    if (isAstroid) {
+                        g.translate(-d2i(x) - astroid_diff, -d2i(y));
+                    } else {
+                        g.translate(-d2i(x), -d2i(y));
+                    }
                 });
     }
 

@@ -40,9 +40,10 @@ public class Game extends Canvas implements Runnable {
         new Thread(this).start();
     }
 
-    public static final int FPS = 25;
-    private static final int FrameDuration = 1000 / FPS;
+    public static final int FPS_UPDATE = 1000 / 25;
+    public static final double FPS_RENDER = 1000 / 60;
     private static final int MaxFrameSkip = 10;
+    public volatile double startTime = 0;
     private long nextFrameTime = System.currentTimeMillis();
 
     public void run() {
@@ -58,7 +59,7 @@ public class Game extends Canvas implements Runnable {
 
         long start = System.currentTimeMillis();
         int fps = 0;
-        while (running) {
+        while (isVisible()) {
             loops = 0;
             while (System.currentTimeMillis() > nextFrameTime
                     && loops < MaxFrameSkip) {
@@ -73,18 +74,12 @@ public class Game extends Canvas implements Runnable {
                     update();
                 }
 
-                nextFrameTime += FrameDuration;
+                nextFrameTime += FPS_UPDATE;
 
                 loops++;
                 DB.setLocked(false);
             }
-            render(db.rooms.get(currentRoom));
-            fps++;
-            if ((start + 1000) <= System.currentTimeMillis()) {
-                frame.setTitle(NAME + " (" + fps + " FPS)");
-                fps = 0;
-                start = System.currentTimeMillis();
-            }
+
             DB.setLocked(true);
             if (sheduleReset) {
                 sheduleReset = false;
@@ -92,7 +87,19 @@ public class Game extends Canvas implements Runnable {
                 ((IllusionRender) render).resetAndFixEverything();
             }
             DB.setLocked(false);
+
+            render(db.rooms.get(currentRoom));
+            fps++;
+            if ((start + 1000) <= System.currentTimeMillis()) {
+                frame.setTitle(NAME + " (" + fps + " FPS)");
+                fps = 0;
+                start = System.currentTimeMillis();
+            }
+            capFrameRate();
         }
+        setVisible(false);
+        frame.dispose();
+        System.exit(0);
     }
 
     public boolean init() {
@@ -107,6 +114,19 @@ public class Game extends Canvas implements Runnable {
         currentRoom = "";
         DB.setLocked(false);
         return false;
+    }
+
+    void capFrameRate() {
+        double diff;
+        diff = System.currentTimeMillis() - startTime;
+        if (diff < FPS_RENDER) {
+            try {
+                Thread.sleep((long) (FPS_RENDER - diff));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        startTime = System.currentTimeMillis();
     }
 
     public BaseRender render;
@@ -161,24 +181,9 @@ public class Game extends Canvas implements Runnable {
 
         }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
         @SuppressWarnings("StatementWithEmptyBody")
         @Override
-        public void mouseClicked(MouseEvent e) {
+        public void mousePressed(MouseEvent e) {
             while (unstableState) {
             }
             while (DB.db.locked) {
@@ -199,6 +204,20 @@ public class Game extends Canvas implements Runnable {
                             allowNext[0] = false;
                         }
                     });
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
         }
     };
 

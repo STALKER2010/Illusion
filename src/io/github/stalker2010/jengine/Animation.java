@@ -116,7 +116,7 @@ public class Animation {
     public static class Step {
         public String sprite = "";
         public int id = -1;
-        public long nextSpeed = (long) (0.5 * Game.FPS);
+        public long nextSpeed = (long) (0.5 * (1000 / Game.FPS_UPDATE));
         public Runnable onChangeTo = null;
         public Runnable onGet = null;
 
